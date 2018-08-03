@@ -10,7 +10,6 @@ module Suspenders
       :create_heroku_application_manifest_file,
       :create_heroku_pipeline,
       :create_production_heroku_app,
-      :create_review_apps_setup_script,
       :create_staging_heroku_app,
       :set_heroku_application_host,
       :set_heroku_backup_schedule,
@@ -100,10 +99,6 @@ module Suspenders
 
     def enable_rack_canonical_host
       config = <<-RUBY
-
-  if ENV.fetch("HEROKU_APP_NAME", "").include?("staging-pr-")
-    ENV["APPLICATION_HOST"] = ENV["HEROKU_APP_NAME"] + ".herokuapp.com"
-  end
 
   config.middleware.use Rack::CanonicalHost, ENV.fetch("APPLICATION_HOST")
       RUBY
