@@ -37,7 +37,6 @@ module Suspenders
       def app_name
         Rails.application.class.parent_name.demodulize.underscore.dasherize
       end
-
     end
   end
 end

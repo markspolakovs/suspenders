@@ -3,7 +3,7 @@ require "spec_helper"
 RSpec.describe "suspenders:staging:pull_requests" do
   it "generates the configuration for Heroku pipeline review apps" do
     with_app { generate("suspenders:staging:pull_requests") }
-    
+
     expect("config/environments/production.rb").to \
       match_contents(%r{HEROKU_APP_NAME})
 
